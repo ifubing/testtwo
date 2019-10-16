@@ -1,0 +1,55 @@
+过滤器的使用格式
+？
+模板变量|过滤器：参数
+例如：
+{{ book.bpub_data|date:'Y年-m月-d日' }}
+
+
+改变日期显示格式的过滤器
+？
+单词：date
+例如：
+{{ book.bpub_data|date:'Y年-m月-d日' }}
+
+
+求长度的过滤器
+？
+单词：length
+例如：
+{{ title|length }}
+
+
+设置默认值的过滤器
+当模板变量没有值时给默认值
+？
+{{ errmsg|default:'无' }}
+
+
+如何自定义过滤器
+如何使用自定义过滤器
+？
+==定义阶段===
+一，在项目根目录下创一个文件夹
+templatetags
+固定的名称
+二，在templatetags目录下建一个py文件用于写代码
+例如filters.py，这个名字随意
+三，在py文件中写代码，格式套路如下
+from django.template import Library
+register=Library()
+@register.filter
+def func(arg1):
+	return 返回值
+==使用阶段==
+一，导入过滤器的py文件
+{% load filters %}
+这里的filters是自建的py文件名称
+二，使用
+1，一个参数的情况
+{{ 模板变量|func}}
+模板变量作为func函数的第一个参数
+最终的返回值替换双花括号
+2，两个参数的情况
+{{模板变量|func:参数2}}
+接收两个参数
+最终返回值替代双花括号

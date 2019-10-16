@@ -1,0 +1,48 @@
+linux安装git
+?
+yum install git
+
+
+初始化设置当前目录为仓库目录
+？
+git init
+
+
+仓库内容添加到暂存区
+？
+》添加指定的文件
+git add 文件名
+》添加全部文件
+git add .
+
+
+暂存区内容添加到版本库中
+？
+git commit -m '版本说明'
+
+
+查看日志
+？
+git log
+
+
+
+版本回退
+？
+一，按照版本号回退
+格式：
+git reset --hard 版本号
+例子：
+$ git reset --hard d3064f0
+二，按照数量回退
+方式1：通过^
+例子：回退到前两个版本
+git reset --hard HEAD^^
+方式2：通过~
+例子：回退到前50个版本
+git reset --hard HEAD~50
+
+
+查看版本操作记录
+？
+git reflog
